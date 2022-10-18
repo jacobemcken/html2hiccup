@@ -1,0 +1,30 @@
+{
+  "name": "html2hiccup",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "frontend:watch": "npx shadow-cljs watch frontend",
+    "frontend:release": "npx shadow-cljs release frontend",
+    "postcss:build": "postcss src/css/main.css -o ./public/css/app.css --verbose",
+    "postcss:watch": "postcss src/css/main.css -o ./public/css/app.css --verbose -w",
+    "postcss:release": "postcss src/css/main.css --env production -o ./public/css/app.css --verbose",
+    "dev": "run-p -l frontend:watch postcss:watch",
+    "release": "run-s frontend:release postcss:release"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.12",
+    "codemirror": "^6.0.1",
+    "@codemirror/state": "^6.1.1",
+    "@codemirror/view": "^6.1.2",
+    "@codemirror/lang-html": "^6.1.2",
+    "@codemirror/legacy-modes": "^6.1.0",
+    "@nextjournal/lang-clojure": "^1.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.18",
+    "postcss-cli": "^10.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "shadow-cljs": "2.20.5",
+    "tailwindcss": "^3.1.8"
+  }
+}
