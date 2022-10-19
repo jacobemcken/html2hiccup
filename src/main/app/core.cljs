@@ -37,9 +37,8 @@
                               (when el
                                 (reset! !view (create-view el {:doc source
                                                                :extensions [basicSetup (lang-html)
-                                                                            (.. EditorView -updateListener (of (fn [e] (let [v (.. e -state -doc toString)]
-                                                                                                                         (when e.docChanged
-                                                                                                                           (on-change v))))))]}))))]
+                                                                            (.. EditorView -updateListener (of (fn [^js e] (when (.-docChanged e)
+                                                                                                                             (on-change (.. e -state -doc toString))))))]}))))]
     [:div
      [:label {:for "html" :class "block text-sm font-medium text-gray-700"}
       "HTML"]
