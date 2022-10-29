@@ -59,8 +59,8 @@
        (hickory/parse-fragment)
        (map #(-> %
                  hickory/as-hiccup
-                 compact-data
-                 pp))
-       ;; removes empty fragments caused by multiple root elements
-       (filter not-empty)
-       (str/join "\n")))
+                 compact-data))
+       (remove str/blank?)
+       (map pp)
+       (str/join)
+       (str/trimr)))
