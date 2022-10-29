@@ -5,8 +5,7 @@
   "src/test"]
 
  :dependencies
- [[hickory "0.7.1"]
-  [reagent "1.1.1"]]
+ [[reagent "1.1.1"]]
 
  :dev-http {3001 "public"}
 
