@@ -78,9 +78,26 @@
 
 (defn page
   []
-  [:div {:class ""}
-   [:h1 {:class "text-3xl font-bold text-blue-500"} "HTML to Hiccup converter"]
-   [columns]])
+  [:div
+   {:class "min-h-full"}
+   [:div
+    {:class "bg-gray-800 pb-32"}
+    [:header
+     {:class "py-10"}
+     [:div
+      {:class "mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"}
+      [:img {:src "img/heart.svg" :height "100px" :width "100px" :class "float-right"}]
+      [:h1
+       {:class "text-3xl font-bold tracking-tight text-white"}
+       "HTML to Hiccup converter"]
+      [:h2 {:class "text-normal text-red-300"} "Clojure and ClojureScript fiendly"]]]]
+   [:main
+    {:class "-mt-32"}
+    [:div
+     {:class "mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8"}
+     [:div
+      {:class "rounded-lg bg-white px-5 py-6 shadow sm:px-6"}
+      [columns]]]]])
 
 (defn ^:dev/after-load start
   []
