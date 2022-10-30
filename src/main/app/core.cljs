@@ -47,7 +47,7 @@
       "HTML"]
      [:div {:class "rounded-md mb-0 text-sm monospace overflow-auto relative border shadow-lg bg-white"
             :ref mount! ; See note [1] for info on :ref
-            :style {:max-height 410}}]]
+            :style {:max-height 750}}]]
     #_(finally
         (.destroy @!view))))
 
@@ -66,7 +66,7 @@
       "Hiccup"]
      [:div {:class "rounded-md mb-0 text-sm monospace overflow-auto relative border shadow-lg bg-white"
             :ref mount! ; See note [1] for info on :ref
-            :style {:max-height 410}}]]))
+            :style {:max-height 750}}]]))
 
 (defn columns
   []
@@ -94,7 +94,7 @@
    [:main
     {:class "-mt-32"}
     [:div
-     {:class "mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8"}
+     {:class "mx-auto px-4 pb-12 sm:px-6 lg:px-8"}
      [:div
       {:class "rounded-lg bg-white px-5 py-6 shadow sm:px-6"}
       [columns]]]]])
