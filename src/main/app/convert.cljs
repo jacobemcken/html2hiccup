@@ -11,6 +11,12 @@
 </div>")
 
 (defn unnecessary-element
+  "The HTML to Hiccup transformation produces undesired elements, i.e.:
+   <div>   <span>hello</span>   </div>
+   would produce:
+   [:div {} \"   \" [:span {} \"hello\"] \"   \"]
+   Notice the empty attribute map and empty string (formating leftovers) on
+   the string 'hello'."
   [element]
   (or (and (coll? element)
            (empty? element))
@@ -26,6 +32,9 @@
 
                             (list? x)
                             (->> x (remove unnecessary-element))
+
+                            (string? x) ; trim whitespace usually caused by pretty formated HTML: <span>\n   Hello\n</span>
+                            (str/trim x)
 
                             :else x)) d))
 
