@@ -31,7 +31,13 @@
 
 (defn pp
   [x]
-  (with-out-str (clojure.pprint/pprint x)))
+  ;; "miser-width" avoids some unnecessary linebreaks
+  (binding [clojure.pprint/*print-miser-width* 2] ; https://clojuredocs.org/clojure.pprint/*print-miser-width*
+    (with-out-str (clojure.pprint/pprint x))))
+;; for a saner "pretty printer", I think a custom printer is needed that can handle:
+;; vector, keyword, map, string and "comments" (list and comment-symbol)
+;; https://github.com/clojure/clojure/blob/b1b88dd25373a86e41310a525a21b497799dbbf2/src/clj/clojure/core_print.clj#L225
+;; https://github.com/clojure/clojurescript/blob/180d789ea6dd41c57684b930fd6f3167dbcea614/src/main/clojure/cljs/core.cljc#L1892-L1898
 
 (defn html->hiccup
   [html-str]
