@@ -65,10 +65,10 @@
   object
   (as-hiccup [this] (condp = (aget this "nodeType")
                       Attribute [(let [attr-name (aget this "name")]
-                                           (if (= "viewBox" attr-name)          ; non-Hickory
-                                             (keyword attr-name)
-                                             (lower-case-keyword attr-name)))
-                                         (aget this "value")]
+                                   (if (= "viewBox" attr-name)                  ; non-Hickory
+                                     (keyword attr-name)
+                                     (lower-case-keyword attr-name)))
+                                 (aget this "value")]
                       Comment (list 'comment (str/trim (aget this "data")))     ; non-Hickory
                       Document (map as-hiccup (aget this "childNodes"))
                       DocumentFragment (map as-hiccup (aget this "childNodes")) ; non-Hickory
