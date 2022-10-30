@@ -76,6 +76,22 @@
        [editor default-html #(.. @!hiccup-view (setState (create-state (assoc hiccup-view-props :doc (convert/html->hiccup %)))))]
        [hiccup-viewer !hiccup-view]])))
 
+(defn footer
+  []
+  [:footer
+   {:aria-labelledby "footer-heading"}
+   [:h2 {:id "footer-heading", :class "sr-only"} "Footer"]
+   [:div
+    {:class "mx-auto max-w-7xl py-6 px-4 sm:px-4 lg:py-8 lg:px-8"}
+    [:div
+     {:class "mt-8 border-t border-gray-300 pt-4"}
+     [:p
+      {:class "text-base text-gray-400 xl:text-center"}
+      [:a
+       {:href "https://html2hiccup.dev" :class "text-base text-gray-500 hover:text-gray-900"}
+       "html2hiccup.dev"]
+      " for your convenience"]]]])
+
 (defn page
   []
   [:<>
@@ -91,12 +107,13 @@
        "HTML to Hiccup converter"]
       [:h2 {:class "text-normal text-red-300"} "Clojure and ClojureScript fiendly"]]]]
    [:main
-    {:class "-mt-32"}
+    {:class "-mt-32 mb-auto"}
     [:div
      {:class "mx-auto px-4 pb-12 sm:px-6 lg:px-8"}
      [:div
       {:class "rounded-lg bg-white px-5 py-6 shadow sm:px-6"}
-      [columns]]]]])
+      [columns]]]]
+   [footer]])
 
 (defn ^:dev/after-load start
   []
