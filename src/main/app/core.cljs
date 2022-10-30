@@ -13,6 +13,9 @@
   <span>Hello World!</span>
   <!-- Can handle comments -->
   <a href=\"https://www.clojure.org\">Clojure webiste</a>
+  <svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" xmlns=\"http://www.w3.org/2000/svg\" baseProfile=\"full\">
+    <rect x=\"16\" y=\"16\" width=\"32\" height=\"32\" fill=\"#ef4444\"/>
+  </svg>
 </div>")
 
 ;; Codemirror used for Clojure (in ClojureScript):

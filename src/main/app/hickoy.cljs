@@ -61,11 +61,15 @@
   "Elements whose content should never have html-escape codes."
   #{:script :style})
 
+(def camel-case-attrs
+  #{"viewBox"
+    "baseProfile"})
+
 (extend-protocol HiccupRepresentable
   object
   (as-hiccup [this] (condp = (aget this "nodeType")
                       Attribute [(let [attr-name (aget this "name")]
-                                   (if (= "viewBox" attr-name)                  ; non-Hickory
+                                   (if (contains? camel-case-attrs attr-name)   ; non-Hickory
                                      (keyword attr-name)
                                      (lower-case-keyword attr-name)))
                                  (aget this "value")]
