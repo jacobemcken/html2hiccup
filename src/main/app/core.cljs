@@ -78,8 +78,7 @@
 
 (defn page
   []
-  [:div
-   {:class "min-h-full"}
+  [:<>
    [:div
     {:class "bg-gray-800 pb-32"}
     [:header
