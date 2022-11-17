@@ -12,7 +12,7 @@
   "<div>
   <span>Hello World!</span>
   <!-- Can handle comments -->
-  <a href=\"https://www.clojure.org\">Clojure webiste</a>
+  <a href=\"https://www.clojure.org\">Clojure website</a>
   <svg width=\"64\" height=\"64\" viewBox=\"0 0 64 64\" xmlns=\"http://www.w3.org/2000/svg\" baseProfile=\"full\">
     <rect x=\"16\" y=\"16\" width=\"32\" height=\"32\" fill=\"#ef4444\"/>
   </svg>
@@ -108,7 +108,7 @@
       [:h1
        {:class "text-3xl font-bold tracking-tight text-white"}
        "HTML to Hiccup converter"]
-      [:h2 {:class "text-normal text-red-300"} "Clojure and ClojureScript fiendly"]]]]
+      [:h2 {:class "text-normal text-red-300"} "Clojure and ClojureScript friendly"]]]]
    [:main
     {:class "-mt-32 mb-auto"}
     [:div
