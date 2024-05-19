@@ -7,6 +7,15 @@
   (:require [clojure.string :as str]
             [goog.string :as gstring]))
 
+(defn parse-style [style]
+    (->> (str/split style #";")
+         (map #(str/split % #":"))
+         (map #(mapv str/trim %))
+         (filter #(= 2 (count %)))
+         (reduce (fn [acc [k v]]
+                   (assoc acc (keyword k) v))
+                 {})))
+
 (defprotocol HiccupRepresentable
   "Objects that can be represented as Hiccup nodes implement this protocol in
    order to make the conversion."
@@ -68,11 +77,13 @@
 (extend-protocol HiccupRepresentable
   object
   (as-hiccup [this] (condp = (aget this "nodeType")
-                      Attribute [(let [attr-name (aget this "name")]
-                                   (if (contains? camel-case-attrs attr-name)   ; non-Hickory
+                      Attribute (let [attr-name (aget this "name")]
+                                  [(if (contains? camel-case-attrs attr-name) ; non-Hickory
                                      (keyword attr-name)
-                                     (lower-case-keyword attr-name)))
-                                 (aget this "value")]
+                                     (lower-case-keyword attr-name))
+                                   (if (= attr-name "style")
+                                     (parse-style (aget this "value"))
+                                     (aget this "value"))])
                       Comment (list 'comment (str/trim (aget this "data")))     ; non-Hickory
                       Document (map as-hiccup (aget this "childNodes"))
                       DocumentFragment (map as-hiccup (aget this "childNodes")) ; non-Hickory
